@@ -1,7 +1,0 @@
-app/android/
-app/build/
-app/.dart_tool/
-app/pubspec.lock
-app/assets/icon.png
-app/assets/icon_fg.png
-admin/config.local.js
