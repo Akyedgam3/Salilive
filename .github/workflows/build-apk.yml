@@ -34,6 +34,9 @@ jobs:
       - name: Patch manifest
         working-directory: app
         run: python3 tools/patch_manifest.py
+      - name: Patch gradle (compileSdk for plugins)
+        working-directory: app
+        run: python3 tools/patch_gradle.py
       - name: Build icons
         working-directory: app
         run: |
