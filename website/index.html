@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SalliLive | غرف دردشة صوتية مباشرة</title>
+<meta name="description" content="SalliLive تطبيق غرف دردشة صوتية مباشرة: افتح غرفتك، تحدّث مع أصدقائك، وأرسل الهدايا. حمّل التطبيق لأندرويد.">
+<meta property="og:title" content="SalliLive | غرف دردشة صوتية مباشرة">
+<meta property="og:description" content="افتح غرفتك، تحدّث مع أصدقائك، وأرسل الهدايا.">
+<meta property="og:image" content="logo.webp">
+<link rel="icon" href="logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b1a;--card:#16162b;--line:#26264a;--txt:#f4f4fb;--mut:#a3a3c2;--pink:#ff2d75;--purple:#7b2ff7;--orange:#ff8a00}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:Cairo,system-ui,sans-serif;line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.glow{position:fixed;inset:0;pointer-events:none;z-index:-1;background:
+  radial-gradient(600px 400px at 85% -5%,#7b2ff733,transparent),
+  radial-gradient(500px 400px at 5% 30%,#ff2d7526,transparent)}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px}
+.brand img{width:40px;height:40px;border-radius:11px}
+nav a{color:var(--mut);margin-inline-start:22px;font-size:15px}
+nav a:hover{color:var(--txt)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:16px;font-weight:800;font-size:17px;
+  background:linear-gradient(135deg,var(--pink),var(--purple));box-shadow:0 10px 30px #ff2d7540;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.sec{background:var(--card);box-shadow:none;border:1px solid var(--line)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:50px 0 70px}
+.hero h1{font-size:clamp(34px,5.4vw,58px);line-height:1.2;font-weight:800}
+.grad{background:linear-gradient(135deg,var(--pink),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--mut);font-size:18px;margin:18px 0 28px;max-width:520px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.meta{margin-top:14px;color:var(--mut);font-size:13px}
+/* phone mockup */
+.phone{width:min(290px,80vw);margin-inline:auto;border-radius:38px;border:8px solid #22224a;background:linear-gradient(#2a0f4a,#0b0b1a);padding:18px 14px 16px;box-shadow:0 30px 80px #7b2ff740}
+.phone .top{display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:14px}
+.seats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px 6px;text-align:center;font-size:10px}
+.seat i{display:block;width:100%;aspect-ratio:1;border-radius:50%;background:#ffffff14;margin-bottom:3px;position:relative}
+.seat.on i{background:linear-gradient(135deg,var(--pink),var(--purple));box-shadow:0 0 0 3px #ff2d7555;animation:p 1.6s infinite}
+.seat.host i::after{content:"👑";position:absolute;top:-9px;inset-inline-start:30%;font-size:12px}
+@keyframes p{50%{box-shadow:0 0 0 7px #ff2d7522}}
+.chat{margin-top:14px;background:#0006;border-radius:14px;padding:10px;font-size:11px;min-height:110px}
+.chat b{color:var(--pink)}.chat .g{background:#ff2d7533;border-radius:9px;padding:2px 8px;display:inline-block;margin:3px 0}
+section{padding:60px 0}
+h2{font-size:clamp(26px,4vw,38px);font-weight:800;text-align:center;margin-bottom:10px}
+.sub{color:var(--mut);text-align:center;margin-bottom:38px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px}
+.card .ic{font-size:34px;margin-bottom:8px}
+.card h3{font-size:19px;margin-bottom:4px}.card p{color:var(--mut);font-size:15px}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.step{background:var(--card);border-radius:22px;padding:24px;position:relative}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,var(--pink),var(--purple));font-weight:800;margin-bottom:10px}
+.step p{color:var(--mut);font-size:15px}
+.cta{text-align:center;background:linear-gradient(135deg,#ff2d7526,#7b2ff733);border:1px solid var(--line);border-radius:30px;padding:50px 20px}
+details{background:var(--card);border-radius:16px;padding:16px 20px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}details p{color:var(--mut);margin-top:8px;font-size:15px}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mut);font-size:14px;text-align:center}
+@media(max-width:800px){.hero{grid-template-columns:1fr;text-align:center;padding-top:20px}.hero p{margin-inline:auto}.ctas{justify-content:center}nav{display:none}}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="wrap">
+  <header>
+    <a class="brand" href="#"><img src="logo.webp" alt="SalliLive">SalliLive</a>
+    <nav><a href="#features">المميزات</a><a href="#install">طريقة التثبيت</a><a href="#faq">أسئلة شائعة</a></nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>غرفتك الصوتية، <span class="grad">بثّ مباشر</span> مع أصدقائك</h1>
+      <p>افتح غرفة، اجمع الناس على المايك، تحدّثوا وتفاعلوا بالهدايا. SalliLive يجمعك بمجتمع حيّ في أي وقت.</p>
+      <div class="ctas">
+        <a class="btn" href="sallilive.apk" download="SalliLive.apk" id="dl">⬇ تحميل التطبيق (APK)</a>
+        <a class="btn sec" href="#install">كيف أثبّته؟</a>
+      </div>
+      <div class="meta">لأجهزة أندرويد 7.0 فأعلى · ملف مباشر بدون متجر</div>
+    </div>
+    <div class="phone" aria-hidden="true">
+      <div class="top"><span>🎙 سهرة الجمعة</span><span>🎧 24</span></div>
+      <div class="seats">
+        <div class="seat on host"><i></i>المضيف</div><div class="seat on"><i></i>سارة</div><div class="seat"><i></i>3</div><div class="seat on"><i></i>أحمد</div>
+        <div class="seat"><i></i>5</div><div class="seat on"><i></i>ليلى</div><div class="seat"><i></i>7</div><div class="seat"><i></i>8</div>
+      </div>
+      <div class="chat"><b>أحمد:</b> مساء الخير يا شباب 👋<br><b>ليلى:</b> نورتوا الغرفة<br><span class="g"><b>سارة</b> أهدت المضيف 🌹 x5</span></div>
+    </div>
+  </div>
+
+  <section id="features">
+    <h2>كل ما تحتاجه في غرفة واحدة</h2>
+    <p class="sub">بسيط وسريع، ومصمم للدردشة الصوتية الجماعية.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">🎙</div><h3>غرف صوتية مباشرة</h3><p>افتح غرفة بـ 4 أو 8 أو 12 مقعداً، واصعد للمايك بضغطة واحدة.</p></div>
+      <div class="card"><div class="ic">🎁</div><h3>هدايا افتراضية</h3><p>أرسل الورود والتيجان والصواريخ، وتظهر للجميع بحركة مميزة.</p></div>
+      <div class="card"><div class="ic">💬</div><h3>دردشة نصية</h3><p>تحدّث كتابةً داخل الغرفة بينما الآخرون على المايك.</p></div>
+      <div class="card"><div class="ic">⭐</div><h3>مستويات ومتابعة</h3><p>تابع أصدقاءك وارفع مستواك كلما دعمت المضيفين.</p></div>
+      <div class="card"><div class="ic">🛡</div><h3>تحكّم كامل للمضيف</h3><p>كتم، إنزال من المايك، وقفل المقاعد لتبقى غرفتك مرتبة.</p></div>
+      <div class="card"><div class="ic">🪙</div><h3>شحن سهل</h3><p>اشحن الكوينز بطرق دفع متعددة وأرسل الإيصال ليُضاف الرصيد بعد المراجعة.</p></div>
+    </div>
+  </section>
+
+  <section id="install">
+    <h2>التثبيت في 4 خطوات</h2>
+    <p class="sub">لأن التطبيق خارج متجر Google Play، يلزم السماح بالتثبيت مرة واحدة.</p>
+    <div class="steps">
+      <div class="step"><h3>حمّل الملف</h3><p>اضغط زر «تحميل التطبيق» وانتظر انتهاء التنزيل.</p></div>
+      <div class="step"><h3>افتح الملف</h3><p>من إشعارات التنزيلات أو تطبيق «الملفات» اضغط على SalliLive.apk.</p></div>
+      <div class="step"><h3>اسمح بالتثبيت</h3><p>إذا ظهر تنبيه، اضغط «الإعدادات» وفعّل «السماح من هذا المصدر».</p></div>
+      <div class="step"><h3>ابدأ</h3><p>أنشئ حسابك وافتح غرفتك الأولى، واسمح بالميكروفون عند الطلب.</p></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>أسئلة شائعة</h2><p class="sub"></p>
+    <details><summary>هل التطبيق مجاني؟</summary><p>التسجيل والدخول للغرف والدردشة مجانية. الهدايا تُشترى بالكوينز.</p></details>
+    <details><summary>لماذا يظهر تحذير عند التثبيت؟</summary><p>أندرويد يعرض هذا التنبيه لأي تطبيق يُثبَّت من خارج المتجر. اسمح بالتثبيت من المتصفح أو مدير الملفات لمرة واحدة.</p></details>
+    <details><summary>كيف أشحن الكوينز؟</summary><p>من «حسابي» ثم «المحفظة»، اختر باقة وطريقة دفع، حوّل المبلغ وأرفق صورة الإيصال، وتُضاف الكوينز بعد المراجعة.</p></details>
+    <details><summary>هل يتوفر للآيفون؟</summary><p>حالياً لأندرويد فقط.</p></details>
+  </section>
+
+  <section>
+    <div class="cta">
+      <h2>جاهز تدخل الغرفة؟</h2>
+      <p class="sub">حمّل SalliLive وابدأ أول محادثة صوتية اليوم.</p>
+      <a class="btn" href="sallilive.apk" download="SalliLive.apk">⬇ تحميل التطبيق (APK)</a>
+    </div>
+  </section>
+</div>
+<footer>© <span id="y"></span> SalliLive · جميع الحقوق محفوظة</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
