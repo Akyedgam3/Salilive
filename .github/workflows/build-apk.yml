@@ -41,3 +41,4 @@ jobs:
         with:
           name: sallilive-apk
           path: app/build/app/outputs/flutter-apk/app-release.apk
+# secrets configured: trigger build
