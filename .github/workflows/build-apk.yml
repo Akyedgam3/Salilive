@@ -50,7 +50,7 @@ jobs:
         working-directory: app
         run: |
           set +e
-          flutter build apk --release --no-shrink 2>&1 | tee build.log
+          flutter build apk --release --no-shrink --target-platform android-arm64 2>&1 | tee build.log
           code=${PIPESTATUS[0]}
           if [ "$code" -ne 0 ]; then
             grep -v -E "^\s*$" build.log | tr -d '\r' | grep -A12 -E "went wrong|rror:|Error " | head -60 | while IFS= read -r l; do printf '::error::%s\n' "$l"; done
