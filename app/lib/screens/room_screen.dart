@@ -111,7 +111,7 @@ class _RoomScreenState extends State<RoomScreen> {
         PostgresChangeFilter(type: PostgresChangeFilterType.eq, column: col, value: roomId);
 
     _ch = sb
-        .channel('room:$roomId', opts: RealtimeChannelConfig(key: myId))
+        .channel('room:$roomId', opts: RealtimeChannelConfig(key: myId ?? ''))
         .onPostgresChanges(
           event: PostgresChangeEvent.all,
           schema: 'public',

@@ -41,18 +41,18 @@ class _UserSheetState extends State<_UserSheet> {
 
   Future<void> _load() async {
     final id = widget.userId;
-    final r = await Future.wait([
-      sb.from('profiles').select().eq('id', id).single(),
-      sb.from('follows').select('follower').eq('following', id).count(CountOption.exact),
-      sb.from('follows').select('following').eq('follower', id).count(CountOption.exact),
-      sb.from('follows').select('follower').eq('follower', myId!).eq('following', id),
-    ]);
+    final Map<String, dynamic> profile = await sb.from('profiles').select().eq('id', id).single();
+    final dynamic followers =
+        await sb.from('follows').select('follower').eq('following', id).count(CountOption.exact);
+    final dynamic following =
+        await sb.from('follows').select('following').eq('follower', id).count(CountOption.exact);
+    final List mine = await sb.from('follows').select('follower').eq('follower', myId!).eq('following', id);
     if (!mounted) return;
     setState(() {
-      _u = r[0] as Map<String, dynamic>;
-      _followers = (r[1] as dynamic).count as int;
-      _following = (r[2] as dynamic).count as int;
-      _isFollowing = (r[3] as List).isNotEmpty;
+      _u = profile;
+      _followers = followers.count as int;
+      _following = following.count as int;
+      _isFollowing = mine.isNotEmpty;
     });
   }
 
